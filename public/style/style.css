@@ -205,7 +205,7 @@ body {
   background-color: white;
   flex-grow: 1;
   display: grid;
-  grid-template-rows: 42px 1fr 52px;
+  grid-template-rows: 42px 1fr;
   gap: 40px;
   padding: 30px;
 }
@@ -235,3 +235,129 @@ body {
   font-size: 14px;
   height: 42px;
 }
+
+.search-result__main {
+  display: grid;
+  grid-template-rows: 1fr 52px;
+  gap: 40px;
+}
+
+.products-table {
+  width: 100%;
+  height: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.table-header {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.table-body {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.table-body tr,
+.table-header tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.table-header tr {
+  height: 73px;
+}
+
+.table-body tr {
+  height: 71px;
+}
+
+.products-table th,
+.products-table td {
+  padding: 0 18px;
+  vertical-align: middle;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: center;
+  font-weight: 400;
+}
+
+.products-table tr > :nth-child(1) {
+  width: 4%
+}
+
+.products-table tr > :nth-child(2) {
+  width: 16%
+}
+
+.products-table tr > :nth-child(3) {
+  width: 16%
+}
+
+.products-table tr > :nth-child(4) {
+  width: 16%
+}
+
+.products-table tr > :nth-child(5) {
+  width: 16%
+}
+
+.products-table tr > :nth-child(6) {
+  width: 16%
+}
+
+.products-table tr > :nth-child(7) {
+  width: 16%
+}
+
+.products-table tr > :nth-child(2) {
+  text-align: left;
+}
+
+.products-table tr > :nth-child(1) {
+  padding: 0;
+}
+
+.products-table tr > :nth-child(1) input[type='checkbox'] {
+  display: block;
+  margin: 0 auto;
+}
+
+.products-table tr {
+  border-bottom: 1px solid rgba(178,179,185,1);
+}
+
+.products-pagination {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pagination-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+button.next-page,
+button.prev-page {
+  border: 1px solid rgba(236,236,235,1);
+  border-radius: 4px;
+  width: 30px;
+  height: 30px;
+  background-image: url(../img/svg/arrow.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 14px 14px;
+}
+
+button.next-page {
+  transform: rotate(180deg);
+}
+

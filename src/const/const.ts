@@ -4,6 +4,6 @@ export const BACKEND_URL = 'https://dummyjson.com/auth/login'; // пока та�
 export const AppRoute = {
   ROOT: '/',
   LOGIN: '/login',
-  CATALOG: '/catalog',
+  PRODUCTS: '/products',
   NOT_FOUND: '/404',
 } as const;

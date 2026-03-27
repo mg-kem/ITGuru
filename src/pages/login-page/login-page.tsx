@@ -1,10 +1,11 @@
 import { toast } from 'react-toastify';
-import loginUser from '../services/login-user';
+import loginUser from '../../services/login-user';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AppRoute } from '../const/const';
+import { AppRoute } from '../../const/const';
 
-function LoginForm(): React.JSX.Element {
+
+function LoginPage() {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
@@ -27,7 +28,7 @@ function LoginForm(): React.JSX.Element {
       targetStorage.setItem('accessToken', data.accessToken);
       targetStorage.setItem('refreshToken', data.refreshToken);
 
-      navigate(AppRoute.CATALOG, { replace: true });
+      navigate(AppRoute.PRODUCTS, { replace: true });
 
       toast.update(toastId, {
         render: 'Вход выполнен успешно',
@@ -94,4 +95,4 @@ function LoginForm(): React.JSX.Element {
   )
 }
 
-export default LoginForm;
+export default LoginPage;
