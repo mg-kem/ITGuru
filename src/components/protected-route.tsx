@@ -1,5 +1,5 @@
 import { Navigate } from 'react-router-dom';
-import { getToken } from '../utils/utils';
+import { getToken } from '../services/token';
 import type { IProtectedRouteProps } from '../types/types.props';
 import { AppRoute } from '../const/const';
 

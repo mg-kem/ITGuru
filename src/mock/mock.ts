@@ -1,4 +1,6 @@
-export const Products = [
+import type { IProduct } from '../types/types';
+
+export const Products: IProduct[] = [
   {
     id: 1,
     name: 'USB Флэшкарта 16GB Kingston DataTraveler Exodia',

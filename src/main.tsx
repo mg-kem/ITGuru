@@ -1,18 +1,23 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import App from './components/App.tsx'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import App from './components/App.tsx';
+import { Provider } from 'react-redux';
+import { store } from './store/store.ts';
+
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
-    <ToastContainer
-      position='top-right'
-      autoClose={3000}
-      theme='light'
-      pauseOnHover
-      closeOnClick
-    />
+    <Provider store={store}>
+      <App />
+      <ToastContainer
+        position='top-right'
+        autoClose={3000}
+        theme='light'
+        pauseOnHover
+        closeOnClick
+      />
+    </Provider>
   </StrictMode>,
 )

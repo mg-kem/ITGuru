@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import LoginPage from '../pages/login-page/login-page';
-import Catalog from '../pages/products-page/products-page';
+import ProductsPage from '../pages/products-page/products-page';
 import ProtectedRoute from './protected-route';
 import { AppRoute } from '../const/const';
 import { BrowserRouter } from 'react-router-dom';
@@ -13,7 +13,7 @@ function App(): React.JSX.Element {
         <Route path={AppRoute.ROOT} element={<Navigate to={AppRoute.PRODUCTS} replace />} />
         <Route path={AppRoute.PRODUCTS} element={
           <ProtectedRoute>
-            <Catalog />
+            <ProductsPage />
           </ProtectedRoute>
         } />
         <Route path={AppRoute.LOGIN} element={<LoginPage />} />
