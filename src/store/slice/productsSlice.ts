@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { IProduct } from '../../types/types';
-import { fetchProductsAction } from '../thunk/products';
+import { fetchProductsAction } from '../thunk/productsThunk';
 
 interface IProductState {
   products: IProduct[];

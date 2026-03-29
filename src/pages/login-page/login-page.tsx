@@ -1,8 +1,10 @@
 import { toast } from 'react-toastify';
-import loginUser from '../../services/login-user';
+// import loginUser from '../../services/login-user';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppRoute } from '../../const/const';
+import { useAppDispatch } from '../../hooks/useStore';
+import { loginAsyncAction } from '../../store/thunk/userThunk';
 
 
 function LoginPage() {
@@ -10,42 +12,37 @@ function LoginPage() {
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
-  const handleLogin = async (evt: React.FormEvent) => {
+  const handleLogin = (evt: React.FormEvent) => {
     evt.preventDefault();
     const toastId = toast.loading('Выполняется вход...');
 
-    try {
-      const data = await loginUser({
-        userName, password
+    dispatch(loginAsyncAction({
+      username: userName,
+      password,
+      rememberMe
+    }))
+      .unwrap()
+      .then(() => {
+        navigate(AppRoute.PRODUCTS, { replace: true });
+        toast.update(toastId, {
+          render: 'Вход выполнен успешно',
+          type: 'success',
+          isLoading: false,
+          autoClose: 3000,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        const errorMessage = err ? err.message : 'Неизвестная ошибка';
+        toast.update(toastId, {
+          render: errorMessage,
+          type: 'error',
+          isLoading: false,
+          autoClose: 3000,
+        });
       });
-
-      const targetStorage = rememberMe ? localStorage : sessionStorage;
-      const fallbackStorage = rememberMe ? sessionStorage : localStorage;
-
-      fallbackStorage.removeItem('accessToken');
-      fallbackStorage.removeItem('refreshToken');
-      targetStorage.setItem('accessToken', data.accessToken);
-      targetStorage.setItem('refreshToken', data.refreshToken);
-
-      navigate(AppRoute.PRODUCTS, { replace: true });
-
-      toast.update(toastId, {
-        render: 'Вход выполнен успешно',
-        type: 'success',
-        isLoading: false,
-        autoClose: 3000,
-      });
-
-    } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : 'Неизвестная ошибка';
-      toast.update(toastId, {
-        render: errorMessage,
-        type: 'error',
-        isLoading: false,
-        autoClose: 3000,
-      });
-    }
   }
 
 
