@@ -1,22 +1,21 @@
 import { useState, useEffect } from 'react';
 import { useAppDispatch } from '../hooks/useStore';
 import { fetchProductsAction } from '../store/thunk/productsThunk';
+import { useDebounce } from '../hooks/useDebounce';
 
 function ProductsHeader() {
   const [query, setQuery] = useState('');
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (!query.trim()) {
-        dispatch(fetchProductsAction(''));
-        return;
-      }
-      dispatch(fetchProductsAction(query))
-    }, 1000);
+  const debouncedQuery = useDebounce(query, 1000);
 
-    return () => clearTimeout(timeout);
-  }, [query]);
+  useEffect(() => {
+    if (!debouncedQuery.trim()) {
+      dispatch(fetchProductsAction(''));
+      return;
+    }
+    dispatch(fetchProductsAction(debouncedQuery));
+  }, [debouncedQuery]);
 
   const onChangeSearchInput: React.ChangeEventHandler<HTMLInputElement> = (evt) => {
     setQuery(evt.target.value)
