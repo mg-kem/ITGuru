@@ -4,7 +4,7 @@ import { useAppSelector } from '../hooks/useStore';
 function ProductsList() {
   const [currentPage, setCurrentPage] = useState(1);
   const products = useAppSelector(state => state.product.products);
-  const pageSize = 5;
+  const pageSize = 10;
   const totalPages = Math.ceil(products.length / pageSize);
   const startIndex = (currentPage - 1) * pageSize;
   const endIndex = startIndex + pageSize;
@@ -29,7 +29,7 @@ function ProductsList() {
             <th scope="col">Вендор</th>
             <th scope="col">Артикул</th>
             <th scope="col">Оценка</th>
-            <th scope="col">Цена</th>
+            <th scope="col">Цена, ₽</th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -41,8 +41,13 @@ function ProductsList() {
               <td>{product.title}</td>
               <td>{product.brand}</td>
               <td>{product.sku}</td>
-              <td>{product.rating} / 5</td>
-              <td>{product.price}</td>
+              <td>
+                <span style={{ color: product.rating < 3.5 ? 'red' : 'inherit' }}>
+                  {product.rating}
+                </span>
+                <span> / 5</span>
+              </td>
+              <td>{product.price},00</td>
               <td>
                 <div className='edit-buttons__container'>
                   <button className='add-button'>+</button>
@@ -53,16 +58,39 @@ function ProductsList() {
           ))}
         </tbody>
       </table>
+
       <div className="products-pagination">
         <p className="products-pagination_info">Показано {startIndex + 1} - {endIndex} из {products.length}</p>
         <div className="pagination-buttons">
-          <button className="prev-page" onClick={prevPage}></button>
-          <button className="next-page" onClick={nextPage}></button>
+          <div className="pagination-buttons">
+            <button
+              className="prev-page"
+              onClick={prevPage}
+              disabled={currentPage === 1}
+            ></button>
+
+            {Array.from({ length: totalPages }, (_, index) => {
+              const page = index + 1;
+              return (
+                <button
+                  key={page}
+                  className={`page-number ${currentPage === page ? 'active' : ''}`}
+                  onClick={() => setCurrentPage(page)}
+                >
+                  {page}
+                </button>
+              );
+            })}
+
+            <button
+              className="next-page"
+              onClick={nextPage}
+              disabled={currentPage === totalPages}
+            ></button>
+          </div>
         </div>
       </div>
     </div>
-
-
   )
 }
 

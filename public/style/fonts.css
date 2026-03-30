@@ -1,0 +1,41 @@
+@font-face {
+  font-family: 'Inter SemiBold';
+  src: url(../../fonts/Inter/static/Inter_18pt-SemiBold.ttf);
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter Regular';
+  src: url(../../fonts/Inter/static/Inter_18pt-Regular.ttf);
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter Medium';
+  src: url(../../fonts/Inter/static/Inter_18pt-Medium.ttf);
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cairo Bold';
+  src: url(../../fonts/Cairo/static/Cairo-Bold.ttf);
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url(../../fonts/Open_Sans/static/OpenSans-Regular.ttf);
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url(../../fonts/Roboto_Mono/static/RobotoMono-Regular.ttf);
+  font-weight: 400;
+  font-style: normal;
+}

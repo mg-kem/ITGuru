@@ -4,12 +4,14 @@ import { fetchProductsAction } from '../thunk/productsThunk';
 
 interface IProductState {
   products: IProduct[];
+  searchQuery: string | null;
   loading: boolean;
   error: string | null;
 }
 
 const initialState: IProductState = {
   products: [],
+  searchQuery: null,
   loading: false,
   error: null,
 }

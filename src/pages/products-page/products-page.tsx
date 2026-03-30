@@ -10,11 +10,8 @@ function ProductsPage(): React.JSX.Element {
 
   return (
     <section className="products">
-
       <ProductsHeader />
-
       <ProductsContainer />
-
     </section>
   )
 }

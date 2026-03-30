@@ -1,34 +1,59 @@
-@font-face {
-  font-family: 'Inter SemiBold';
-  src: url(../../fonts/Inter/static/Inter_18pt-SemiBold.ttf);
-  font-weight: 600;
-  font-style: normal;
-}
+@import './fonts.css';
 
-@font-face {
-  font-family: 'Inter Regular';
-  src: url(../../fonts/Inter/static/Inter_18pt-Regular.ttf);
-  font-weight: 400;
-  font-style: normal;
-}
+:root {
+  --color-bg: rgba(249,249,249,1);
+  --color-white: rgba(255,255,255,1);
+  --color-gray-gradient: rgba(237,237,237,0.03);
 
-@font-face {
-  font-family: 'Inter Medium';
-  src: url(../../fonts/Inter/static/Inter_18pt-Medium.ttf);
-  font-weight: 500;
-  font-style: normal;
-}
+  --color-text-main: rgba(35,35,35,1);
+  --color-text-secondary: rgba(108,108,108,1);
+  --color-text-light: rgba(178,179,185,1);
 
-@font-face {
-  font-family: 'Cairo Bold';
-  src: url(../../fonts/Cairo/static/Cairo-Bold.ttf);
-  font-weight: 700;
-  font-style: normal;
+  --color-border: rgba(236,236,235,1);
+  --color-divider: rgba(235,235,235,1);
+  --color-input: rgba(237,237,237,1);
+
+  --color-primary: rgba(36,46,219,1);
+  --color-primary-light: rgba(121,127,234,1);
+  --color-focus: rgba(117,133,223,0.658);
+
+  --color-muted: rgba(156,156,156,1);
+  --color-search-bg: rgba(243,243,243,1);
 }
 
 body {
-  background-color: rgba(249,249,249,1);
+  background-color: var(--color-bg);
 }
+
+/* Стили для кнопок */
+.auth-form__button {
+  padding: 16px 8px;
+  border-radius: 12px;
+  background-color: var(--color-primary);
+  color: rgba(255,255,255,1);
+  font-family: 'Inter SemiBold';
+  font-size: 18px;
+  line-height: 120%;
+  letter-spacing: -1%;
+}
+
+.product-list__button-refresh {
+  background-image: url(../img/svg/update.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 42px;
+  height: 42px;
+}
+
+.product-list__button-add {
+  background-color: var(--color-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
 
 .auth-content {
   display: flex;
@@ -38,7 +63,7 @@ body {
 }
 
 .auth-form {
-  outline: 6px solid rgba(255,255,255,1);
+  outline: 6px solid var(--color-white);
   outline-offset: -6px;
   border-radius: 40px;
   box-shadow: 0 24px 32px rgba(0,0,0, 0.04);
@@ -47,7 +72,7 @@ body {
   flex-direction: column;
   min-height: 716px;
   padding: 48px;
-  background: linear-gradient(rgba(237,237,237,0.03), rgba(255,255,255,1));
+  background: linear-gradient(var(--color-gray-gradient), var(--color-white));
 }
 
 .auth-form__image {
@@ -62,7 +87,7 @@ body {
   text-align: center;
   letter-spacing: -1.5%;
   line-height: 110%;
-  color: rgba(35,35,35,1);
+  color: var(--color-text-main);
   margin-bottom: 12px;
 }
 
@@ -97,7 +122,7 @@ body {
 .form__input {
   padding: 14px 16px;
   border-radius: 12px;
-  outline: 1.5px solid rgba(237,237,237,1);
+  outline: 1.5px solid var(--color-input);
   outline-offset: -1.5px;
   margin-bottom: 16px;
   transition: outline 1s;
@@ -116,24 +141,13 @@ body {
 }
 
 .form__checkbox-label {
-  color: rgba(156,156,156,1);
+  color: var(--color-muted);
   font-family: 'Inter Medium';
   font-size: 16px;
 }
 
-.form__button {
-  padding: 16px 8px;
-  border-radius: 12px;
-  background-color: rgba(36,46,219,1);
-  color: rgba(255,255,255,1);
-  font-family: 'Inter SemiBold';
-  font-size: 18px;
-  line-height: 120%;
-  letter-spacing: -1%;
-}
-
 .divider {
-  color: rgba(235,235,235,1);
+  color: var(--color-divider);
   font-size: 16px;
   line-height: 150%;
   font-family: 'Inter Medium';
@@ -151,18 +165,18 @@ body {
   content: '';
   flex:1;
   height: 1px;
-  background: rgba(235,235,235,1);
+  background: var(--color-divider);
 }
 
 .form-footer span {
   font-family: 'Inter Regular';
   font-size: 18px;
-  color: rgba(108,108,108,1);
+  color: var(--color-text-secondary);
   line-height: 150%;
 }
 
 .form-footer a {
-  color: rgba(36,46,219,1);
+  color: var(--color-primary);
   text-decoration: underline;
   font-family: 'Inter SemiBold';
 }
@@ -194,7 +208,7 @@ body {
 }
 
 .products__search-input {
-  background-color: rgba(243,243,243,1);
+  background-color: var(--color-search-bg);
   margin: 0 auto;
   min-width: 700px;
   padding: 12px 20px;
@@ -228,7 +242,7 @@ body {
 }
 
 .product-list__buttons button {
-  outline: 1px solid rgba(236,236,235,1);
+  outline: 1px solid var(--color-border);
   outline-offset: -1px;
   border-radius: 8px;
   padding: 16px 20px;
@@ -253,6 +267,9 @@ body {
   display: table;
   width: 100%;
   table-layout: fixed;
+  color: var(--color-text-light);
+  font-weight: 700;
+  font-family: 'Cairo Bold';
 }
 
 .table-body {
@@ -260,6 +277,8 @@ body {
   width: 100%;
   height: 100%;
   overflow-y: auto;
+  font-family: 'Open Sans';
+  font-weight: 400;
 }
 
 .table-body tr,
@@ -267,6 +286,15 @@ body {
   display: table;
   width: 100%;
   table-layout: fixed;
+}
+
+.products-table tbody tr td:nth-child(2),
+.products-table tbody tr td:nth-child(3) {
+  font-weight: bold;
+}
+
+.products-table tbody tr td:nth-child(6) {
+  font-family: 'Roboto Mono';
 }
 
 .table-header tr {
@@ -330,7 +358,7 @@ body {
 }
 
 .products-table tr {
-  border-bottom: 1px solid rgba(178,179,185,1);
+  border-bottom: 1px solid var(--color-text-light);
 }
 
 .products-pagination {
@@ -345,12 +373,35 @@ body {
   gap: 8px;
 }
 
-button.next-page,
-button.prev-page {
-  border: 1px solid rgba(236,236,235,1);
+.pagination-buttons button {
+  border: 1px solid var(--color-border);
+  color: var(--color-text-light);
   border-radius: 4px;
   width: 30px;
   height: 30px;
+}
+
+.page-number {
+  padding: 4px 8px;
+  background: white;
+  cursor: pointer;
+}
+
+.page-number.active {
+  background: var(--color-primary-light);
+  color: white;
+}
+
+button.prev-page,
+button.next-page {
+  padding: 4px 8px;
+  cursor: pointer;
+  border: none;
+}
+
+button.next-page,
+button.prev-page {
+  
   background-image: url(../img/svg/arrow.svg);
   background-repeat: no-repeat;
   background-position: center;
@@ -378,7 +429,7 @@ button.next-page {
   align-items: baseline;
   justify-content: center;
   border-radius: 50%;
-  border: 1px solid rgba(178,179,185,1);
+  border: 1px solid var(--color-text-light);
   width: 26px;
   height: 26px;
   vertical-align: middle;

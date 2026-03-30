@@ -74,7 +74,7 @@ function LoginPage() {
             <label htmlFor="checkbox" className="form__checkbox-label">Запомнить данные</label>
           </div>
 
-          <button className="form__button">Войти</button>
+          <button className="auth-form__button">Войти</button>
         </form>
 
         <div className="divider">

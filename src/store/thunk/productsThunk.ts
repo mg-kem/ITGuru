@@ -11,10 +11,11 @@ export type TProductsResponse = {
   limit: number;
 };
 
-export const fetchProductsAction = createAsyncThunk<TProductsResponse, void, { dispatch: AppDispatch; state: State; extra: AxiosInstance }>(
+export const fetchProductsAction = createAsyncThunk<TProductsResponse, string, { dispatch: AppDispatch; state: State; extra: AxiosInstance }>(
   'fetchProducts',
-  async (_arg, { extra: api }) => {
-    const { data } = await api.get<TProductsResponse>(APIRoute.PRODUCTS);
+  async (query, { extra: api }) => {
+    const url = query ? `${APIRoute.PRODUCTS}/search` : APIRoute.PRODUCTS
+    const { data } = await api.get<TProductsResponse>(url, { params: query ? { q: query } : {} });
     return data;
   }
 )
