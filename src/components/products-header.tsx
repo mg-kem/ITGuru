@@ -15,7 +15,7 @@ function ProductsHeader() {
       return;
     }
     dispatch(fetchProductsAction(debouncedQuery));
-  }, [debouncedQuery]);
+  }, [debouncedQuery, dispatch]);
 
   const onChangeSearchInput: React.ChangeEventHandler<HTMLInputElement> = (evt) => {
     setQuery(evt.target.value)
